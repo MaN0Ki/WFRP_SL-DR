@@ -79,6 +79,8 @@ int calc(int att)
     int rolled = roll();
     int result = att - rolled;
 
+
+
     if (rolled < att)
     {
         printf("Success: %d \n", result);
