@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
-
+#include <ctype.h>
 
 void dice(int i)
 {
@@ -61,14 +61,15 @@ int roll()
 {
     int rand1 = (rand() % 10);
     int rand2 = (rand() % 10);
-    
+
     dice(rand1);
     dice(rand2);
 
-if(rand1 == rand2){
-printf("!! Pasch !!");
-}
-    
+    if (rand1 == rand2)
+    {
+        printf("!! Pasch !!");
+    }
+
     printf("\nDice rolled: %d%d 🎲 \n", rand1, rand2);
     return concat(rand1, rand2);
 }
@@ -78,8 +79,6 @@ int calc(int att)
 
     int rolled = roll();
     int result = att - rolled;
-
-
 
     if (rolled < att)
     {
@@ -103,11 +102,11 @@ int calc(int att)
 
 int main()
 {
-int a;
+    int a;
 
     srand(time(0));
     printf("🎲🎲 Success Roller 🎲🎲\n");
-    
+
     while (1)
     {
         printf("input: ");
