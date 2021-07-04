@@ -6,4 +6,4 @@ quick and dirty
 
 
 
-Also place for learning GIT Actions
+Also my place for learning GIT Actions
