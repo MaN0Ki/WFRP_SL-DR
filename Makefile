@@ -4,3 +4,7 @@ all: roll.c
 
 clean:
 	rm -f roll
+
+test: roll
+	./roll 12
+
