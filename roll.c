@@ -4,6 +4,16 @@
 #include <string.h>
 #include <ctype.h>
 
+static void rtfm(char *argv[])
+{
+	printf("Usage: %s  <param1> \n", argv[0]);
+	printf("Function: Dice Roll\n");
+	printf("Optionen:\n");
+	printf("     [int]                   - pass an INT and Roll\n");
+	printf("\n");
+
+}
+
 void dice(int i)
 {
     switch (i)
@@ -100,20 +110,34 @@ int calc(int att)
     return result;
 }
 
-int main()
+int main(int argc, char *argv[])
 {
     int a;
 
     srand(time(0));
     printf("🎲🎲 Success Roller 🎲🎲\n");
+	
 
-    while (1)
-    {
-        printf("input: ");
-        scanf("%d", &a);
-        calc(a);
+	
+	if 	(argc > 2){
+		rtfm(argv);
+	}
+	else if (argv[1]){
+		printf("input: %s \n", argv[1]);
+		int x = atoi(argv[1]);
+        x = calc(x);
         printf("------------\n");
-    }
+		return 0; 
+	}
+	else{
+		while (1)
+		{
+			printf("input: ");
+			scanf("%d", &a);
+			calc(a);
+			printf("------------\n");
+		}
+	}
 
     return 0;
 }
