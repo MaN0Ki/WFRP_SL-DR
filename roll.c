@@ -6,12 +6,11 @@
 
 static void rtfm(char *argv[])
 {
-	printf("Usage: %s  <param1> \n", argv[0]);
-	printf("Function: Dice Roll\n");
-	printf("Optionen:\n");
-	printf("     [int]                   - pass an INT and Roll\n");
-	printf("\n");
-
+    printf("Usage: %s  <param1> \n", argv[0]);
+    printf("Function: Dice Roll\n");
+    printf("Optionen:\n");
+    printf("     [int]                   - pass an INT and Roll\n");
+    printf("\n");
 }
 
 void dice(int i)
@@ -115,29 +114,31 @@ int main(int argc, char *argv[])
     int a;
 
     srand(time(0));
+    system("clear");
     printf("🎲🎲 Success Roller 🎲🎲\n");
-	
 
-	
-	if 	(argc > 2){
-		rtfm(argv);
-	}
-	else if (argv[1]){
-		printf("input: %s \n", argv[1]);
-		int x = atoi(argv[1]);
+    if (argc > 2)
+    {
+        rtfm(argv);
+    }
+    else if (argv[1])
+    {
+        printf("input: %s \n", argv[1]);
+        int x = atoi(argv[1]);
         x = calc(x);
         printf("------------\n");
-		return 0; 
-	}
-	else{
-		while (1)
-		{
-			printf("input: ");
-			scanf("%d", &a);
-			calc(a);
-			printf("------------\n");
-		}
-	}
+        return 0;
+    }
+    else
+    {
+        while (1)
+        {
+            printf("input: ");
+            scanf("%d", &a);
+            calc(a);
+            printf("------------\n");
+        }
+    }
 
     return 0;
 }
