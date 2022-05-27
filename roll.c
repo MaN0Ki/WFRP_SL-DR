@@ -13,6 +13,25 @@ static void rtfm(char *argv[])
     printf("\n");
 }
 
+int rng()
+{
+    int randomData = open("/dev/urandom", O_RDONLY);
+    if (randomData < 0)
+    {
+        // something went wrong
+    }
+    else
+    {
+        char myRandomData[50];
+        ssize_t result = read(randomData, myRandomData, sizeof myRandomData);
+        if (result < 0)
+        {
+            // something went wrong
+        }
+    }
+    return [int]result
+}
+
 void dice(int i)
 {
     switch (i)
