@@ -1,10 +1,20 @@
+CC ?= gcc
+CFLAGS ?= -Wall -Werror -g
+TARGET ?= roll
+SRC ?= roll.c
 
-all: roll.c
-	gcc -Wall -Werror -g -o roll roll.c 
+all: $(TARGET)
+
+$(TARGET): $(SRC)
+	$(CC) $(CFLAGS) -o $(TARGET) $(SRC)
 
 clean:
-	rm -f roll
+	rm -f $(TARGET) *.o
 
-test: roll
-	./roll 12
+run:
+	$(MAKE) $(TARGET)
+	./$(TARGET) 12
+
+test: $(TARGET)
+	./$(TARGET) 12
 
