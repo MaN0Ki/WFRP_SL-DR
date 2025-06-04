@@ -3,6 +3,8 @@
 #include <time.h>
 #include <string.h>
 #include <ctype.h>
+#include <fcntl.h>
+#include <unistd.h>
 
 static void rtfm(char *argv[])
 {
@@ -15,21 +17,24 @@ static void rtfm(char *argv[])
 
 int rng()
 {
-    int randomData = open("/dev/urandom", O_RDONLY);
-    if (randomData < 0)
+    int fd = open("/dev/urandom", O_RDONLY);
+    if (fd < 0)
     {
-        // something went wrong
+        perror("open");
+        return rand();
     }
-    else
+
+    unsigned int value = 0;
+    ssize_t result = read(fd, &value, sizeof(value));
+    close(fd);
+
+    if (result != sizeof(value))
     {
-        char myRandomData[50];
-        ssize_t result = read(randomData, myRandomData, sizeof myRandomData);
-        if (result < 0)
-        {
-            // something went wrong
-        }
+        perror("read");
+        return rand();
     }
-    return [int]result
+
+    return (int)(value & 0x7fffffff);
 }
 
 void dice(int i)
